@@ -11,6 +11,12 @@ const ResultList = (props) => {
     }
     fetchData()
   }, [])
+
+  /*  const random = () => {
+    const randomNum = Math.round((Math.random() * state.length) + 1 )
+    return 
+  } */
+
   return (
     <>
       <h2>List</h2>

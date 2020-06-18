@@ -5,11 +5,13 @@ import Footer from "./Footer"
 const Page = ({ children }) => {
   return (
     <>
-      <Header />
-      <section className="main">
-        <div className="inner">{children}</div>
-      </section>
-      <Footer />
+      <div className="container">
+        <Header />
+        <section className="main">
+          <div>{children}</div>
+        </section>
+        <Footer />
+      </div>
     </>
   )
 }
