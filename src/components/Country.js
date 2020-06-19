@@ -2,15 +2,20 @@ import React from "react"
 import styled from "styled-components"
 
 const Card = styled.div`
-  min-height: 3rem;
-  width: 50%;
+  min-height: 2rem;
+  width: 100%;
   padding-left: 5px;
+`
+
+const StyledH4 = styled.h4`
+  margin: 0.3em 0;
+  max-width: 100%;
 `
 
 const Country = ({ name, flag }) => {
   return (
     <Card>
-      <h4>{name}</h4>
+      <StyledH4>{name}</StyledH4>
     </Card>
   )
 }

@@ -2,6 +2,7 @@ import React from "react"
 import styled from "styled-components"
 import ResultList from "../components/ResultList"
 import Window from "../styled/Window"
+import Filter from "../components/Filter"
 
 const Intro = styled.div`
   width: 80%;
@@ -13,8 +14,9 @@ const Home = (props) => {
     <Window>
       <Intro>
         <h2>Quick facts about every country on planet Earth!</h2>
-        <p>This site is a helpful resource for finding quick facts about countries and regions of the world. The application was developed with React.</p>
+        <p>This site is a helpful resource for finding quick facts about countries, territories and regions of the world. The application is a web development learning project made with React.</p>
       </Intro>
+      <Filter />
       <ResultList />
     </Window>
   )

@@ -11,7 +11,7 @@ const HeadBg = styled.div`
 const Header = (props) => {
   return (
     <header className="header">
-      <div className="inner">
+      <div className="inner inner--header">
         <HeadBg>
           <h1 className="title">Country Reference</h1>
         </HeadBg>

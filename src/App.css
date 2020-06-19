@@ -102,6 +102,10 @@ h1 {
     width: 70%;
     padding: var(--padding);
   }
+
+  .inner--header {
+    padding: 0;
+  }
 }
 
 .grid {
