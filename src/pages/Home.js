@@ -3,9 +3,10 @@ import styled from "styled-components"
 import ResultList from "../components/ResultList"
 import Window from "../styled/Window"
 import Filter from "../components/Filter"
+// import RegionNav from "../components/RegionNav"
 
 const Intro = styled.div`
-  width: 80%;
+  width: 90%;
   margin: 0 auto;
 `
 

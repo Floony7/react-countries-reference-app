@@ -38,6 +38,16 @@ h1 {
   font-size: 4rem;
 }
 
+.heading--purple {
+  color: rebeccapurple;
+  font-weight: bold;
+  margin-top: 0;
+}
+
+.text-center {
+  text-align: center;
+}
+
 .title {
   margin: 1rem 0 0.5em;
   text-transform: uppercase;
@@ -95,6 +105,10 @@ h1 {
 .inner {
   width: 90%;
   margin: 0 auto;
+}
+
+.inner--page {
+  width: 90%;
 }
 
 @media (min-width: 580px) {
