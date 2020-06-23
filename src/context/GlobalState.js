@@ -7,6 +7,7 @@ export const CountriesProvider = ({ children }) => {
   const initialState = {
     loading: false,
     countries: [],
+    currentCountry: {},
     filtered: null,
     region: "",
   }
@@ -17,6 +18,18 @@ export const CountriesProvider = ({ children }) => {
   const fetchData = async () => {
     const res = await axios.get("https://restcountries.eu/rest/v2/all")
     dispatch({ type: "SET_DATA", payload: res.data })
+  }
+
+  // Get country
+  /* const getCountry = (code) => {
+    const selected = state.countries.find((country) => {
+      return country.alpha2Code === code
+    })
+    dispatch({ type: "GET_COUNTRY", payload: selected })
+  } */
+  const getCountry = async (code) => {
+    const res = await axios.get(`https://restcountries.eu/rest/v2/alpha/${code}`)
+    dispatch({ type: "GET_COUNTRY", payload: res.data })
   }
 
   // Filter countries
@@ -38,9 +51,12 @@ export const CountriesProvider = ({ children }) => {
         countries: state.countries,
         loading: state.loading,
         filtered: state.filtered,
+        currentCountry: state.currentCountry,
+        region: state.region,
         setRegion,
         fetchData,
         clearFilter,
+        getCountry,
       }}
     >
       {children}

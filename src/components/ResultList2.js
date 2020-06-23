@@ -27,18 +27,19 @@ const ResultList2 = (props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  console.log(countries)
+  const code = countries.map((country) => `Country code is ${country.alpha2Code} and ${country.numericCode}`)
+  console.log(code)
   return (
     <ColumnList>
       {filtered !== null
         ? filtered.map((country) => (
             <li key={country.numericCode}>
-              <Country flag={country.flag} name={country.name} />
+              <Country flag={country.flag} name={country.name} alpha2Code={country.alpha2Code} />
             </li>
           ))
         : countries.map((country) => (
             <li key={country.numericCode}>
-              <Country flag={country.flag} name={country.name} />
+              <Country flag={country.flag} name={country.name} alpha2Code={country.alpha2Code} />
             </li>
           ))}
     </ColumnList>

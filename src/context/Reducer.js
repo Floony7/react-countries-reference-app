@@ -28,6 +28,11 @@ export default (state, action) => {
         ...state,
         filtered: action.payload,
       }
+    case "GET_COUNTRY":
+      return {
+        ...state,
+        currentCountry: action.payload,
+      }
     default:
       return state
   }
