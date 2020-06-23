@@ -3,16 +3,19 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
 import "./App.css"
 import Page from "./components/Page"
 import Home from "./pages/Home"
+import { CountriesProvider } from "./context/GlobalState"
 
 function App() {
   return (
-    <Router>
-      <Page>
-        <Switch>
-          <Route exact path="/" component={Home} />
-        </Switch>
-      </Page>
-    </Router>
+    <CountriesProvider>
+      <Router>
+        <Page>
+          <Switch>
+            <Route exact path="/" component={Home} />
+          </Switch>
+        </Page>
+      </Router>
+    </CountriesProvider>
   )
 }
 

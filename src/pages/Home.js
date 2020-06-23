@@ -1,9 +1,8 @@
 import React from "react"
 import styled from "styled-components"
-import ResultList from "../components/ResultList"
+import ResultList2 from "../components/ResultList2"
 import Window from "../styled/Window"
 import Filter from "../components/Filter"
-// import RegionNav from "../components/RegionNav"
 
 const Intro = styled.div`
   width: 90%;
@@ -18,7 +17,7 @@ const Home = (props) => {
         <p>This site is a helpful resource for finding quick facts about countries, territories and regions of the world. The application is a web development learning project made with React.</p>
       </Intro>
       <Filter />
-      <ResultList />
+      <ResultList2 />
     </Window>
   )
 }

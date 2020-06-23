@@ -1,6 +1,8 @@
-import React from "react"
+import React, { useContext, useState } from "react"
+import StateContext from "../context/StateContext"
 import styled from "styled-components"
 import RegionButton from "../styled/RegionButton"
+import ListTitle from "../styled/ListTitle"
 
 const NavWrap = styled.div`
   width: 90%;
@@ -14,20 +16,44 @@ const NavWrap = styled.div`
     flex-wrap: wrap;
   }
 `
-
 const RegionNav = (props) => {
+  const { setRegion, clearFilter } = useContext(StateContext)
+  const [title, setTitle] = useState("")
+
+  const handleClick = (e) => {
+    let region = e.target.dataset.value
+    if (region) {
+      setRegion(region)
+      setTitle(region)
+    } else {
+      clearFilter()
+    }
+    // Pass region variable to action "SET_REGION"
+  }
+
   return (
     <>
       <NavWrap>
         <h2 className="heading--purple">View countries by region</h2>
         <div className="nav-inner">
-          <RegionButton inputColor="green">Africa</RegionButton>
-          <RegionButton inputColor="crimson">Asia</RegionButton>
-          <RegionButton inputColor="mediumblue">Europe</RegionButton>
-          <RegionButton inputColor="orangered">Oceania</RegionButton>
-          <RegionButton inputColor="steelblue">The Americas</RegionButton>
+          <RegionButton data-value="Africa" inputColor="green" onClick={handleClick}>
+            Africa
+          </RegionButton>
+          <RegionButton data-value="Asia" inputColor="crimson" onClick={handleClick}>
+            Asia
+          </RegionButton>
+          <RegionButton data-value="Europe" inputColor="mediumblue" onClick={handleClick}>
+            Europe
+          </RegionButton>
+          <RegionButton data-value="Oceania" inputColor="orangered" onClick={handleClick}>
+            Oceania
+          </RegionButton>
+          <RegionButton data-value="Americas" inputColor="steelblue" onClick={handleClick}>
+            The Americas
+          </RegionButton>
         </div>
       </NavWrap>
+      {/* <ListTitle>{title}</ListTitle> */}
     </>
   )
 }
