@@ -9,7 +9,7 @@ export const CountriesProvider = ({ children }) => {
     countries: [],
     currentCountry: {},
     filtered: null,
-    region: "",
+    regionName: "",
   }
 
   const [state, dispatch] = useReducer(Reducer, initialState)
@@ -45,6 +45,11 @@ export const CountriesProvider = ({ children }) => {
   // Clear filter
   const clearFilter = () => dispatch({ type: "CLEAR_FILTER" })
 
+  // Set region title
+  const setRegionName = (text) => {
+    dispatch({ type: "SET_REGION_NAME", payload: text })
+  }
+
   return (
     <StateContext.Provider
       value={{
@@ -54,6 +59,7 @@ export const CountriesProvider = ({ children }) => {
         currentCountry: state.currentCountry,
         region: state.region,
         setRegion,
+        setRegionName,
         fetchData,
         clearFilter,
         getCountry,

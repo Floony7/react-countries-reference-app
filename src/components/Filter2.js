@@ -1,15 +1,13 @@
-import React, { useContext } from "react"
+import React from "react"
 import styled from "styled-components"
 import "../App.css"
 import SearchInput from "../styled/SearchInput"
 import StyledSelect from "../styled/StyledSelect"
-import RegionNav from "./RegionNav"
-import StateContext from "../context/StateContext"
 
 const FilterBar = styled.div`
-  width: 90%;
+  width: 100%;
   margin: 0 auto;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 0;
   background-color: palegoldenrod;
 
   .filter-inner {
@@ -19,11 +17,9 @@ const FilterBar = styled.div`
   }
 `
 
-const Filter = (props) => {
-  const { regionName } = useContext(StateContext)
+const Filter2 = (props) => {
   return (
     <>
-      <RegionNav />
       <FilterBar>
         <h2 className="heading--purple">Search</h2>
         <div className="filter-inner">
@@ -32,10 +28,9 @@ const Filter = (props) => {
             <option value="first">First option</option>
           </StyledSelect>
         </div>
-        {regionName && <h2>{regionName}</h2>}
       </FilterBar>
     </>
   )
 }
 
-export default Filter
+export default Filter2

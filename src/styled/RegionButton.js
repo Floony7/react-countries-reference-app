@@ -2,7 +2,7 @@ import styled from "styled-components"
 
 const RegionButton = styled.span`
   width: 150px;
-  height: 75px;
+  height: 50px;
   background-color: ${(props) => props.inputColor || "teal"};
   border: 1px solid rebeccapurple;
   font-size: 18px;

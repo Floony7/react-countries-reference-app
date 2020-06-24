@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react"
 import StateContext from "../context/StateContext"
 import styled from "styled-components"
 import RegionButton from "../styled/RegionButton"
+import Filter2 from "./Filter2"
 import ListTitle from "../styled/ListTitle"
 
 const NavWrap = styled.div`
@@ -16,6 +17,11 @@ const NavWrap = styled.div`
     flex-wrap: wrap;
   }
 `
+const Intro = styled.div`
+  width: 90%;
+  margin: 0 auto;
+`
+
 const RegionNav = (props) => {
   const { setRegion, clearFilter } = useContext(StateContext)
   const [title, setTitle] = useState("")
@@ -28,7 +34,6 @@ const RegionNav = (props) => {
     } else {
       clearFilter()
     }
-    // Pass region variable to action "SET_REGION"
   }
 
   return (
@@ -51,9 +56,12 @@ const RegionNav = (props) => {
           <RegionButton data-value="Americas" inputColor="steelblue" onClick={handleClick}>
             The Americas
           </RegionButton>
+          <Filter2 />
         </div>
       </NavWrap>
-      {/* <ListTitle>{title}</ListTitle> */}
+      <Intro>
+        <ListTitle inputColor="white">{!title ? "All countries" : title}</ListTitle>
+      </Intro>
     </>
   )
 }

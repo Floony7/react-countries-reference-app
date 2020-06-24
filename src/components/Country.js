@@ -8,6 +8,11 @@ const Card = styled.div`
   padding-left: 5px;
   display: flex;
   align-items: center;
+  transition: background-color 0.3s ease-in;
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.5);
+  }
 `
 
 const StyledH4 = styled.h4`
@@ -20,7 +25,9 @@ const Country = ({ name, alpha2Code, flag }) => {
   return (
     <Card>
       <StyledH4>
-        <Link to={`/countries/${alpha2Code}`}>{name}</Link>
+        <Link style={{ textDecoration: "none", color: "#fff" }} to={`/countries/${alpha2Code}`}>
+          {name}
+        </Link>
       </StyledH4>
     </Card>
   )
