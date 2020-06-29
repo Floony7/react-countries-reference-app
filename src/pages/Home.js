@@ -2,7 +2,6 @@ import React from "react"
 import styled from "styled-components"
 import ResultList2 from "../components/ResultList2"
 import Window from "../styled/Window"
-import Filter from "../components/Filter"
 import RegionNav from "../components/RegionNav"
 
 const Intro = styled.div`

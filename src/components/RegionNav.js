@@ -39,7 +39,7 @@ const RegionNav = (props) => {
   return (
     <>
       <NavWrap>
-        <h2 className="heading--purple">View countries by region</h2>
+        <h2 className="heading--purple">View countries and territories by region</h2>
         <div className="nav-inner">
           <RegionButton data-value="Africa" inputColor="green" onClick={handleClick}>
             Africa

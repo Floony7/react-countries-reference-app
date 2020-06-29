@@ -3,28 +3,29 @@ import styled from "styled-components"
 import { useParams } from "react-router-dom"
 import StateContext from "../context/StateContext"
 import ListTitle from "../styled/ListTitle"
-import Window from "../styled/Window"
+import SingleNav from "../components/SingleNav"
 
-// const SingleWrap = styled.div`
-//   width: 90%;
-//   display: grid;
-//   grid-template-columns: 1fr 2fr;
-//   background-color: palegoldenrod;
-//   color: #000;
-//   width: 100%;
-//   padding: 1rem;
-// `
-
-const FlagContainer = styled.div`
-  grid-column: 1 / 2;
-  margin-right: 10px;
-  img {
-    width: 100%;
-  }
+const PageWrap = styled.div`
+  margin-top: 0;
 `
 
-const SingleContent = styled.div`
-  grid-column: 2 / 3;
+const SingleWrap = styled.div`
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 1rem;
+  min-height: 40vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  /* margin-top: -5rem; */
+`
+
+const Img = styled.img`
+  width: 100%;
+  margin-right: 0.5rem;
+  box-shadow: -2px 3px 3px rgba(0, 0, 0, 0.3);
+`
+
+const InfoBlock = styled.div`
+  margin-left: 1rem;
 `
 
 const Single = (props) => {
@@ -35,15 +36,32 @@ const Single = (props) => {
     // eslint-disable-next-line
   }, [])
 
+  const languages = currentCountry.languages.map(({ name }) => {
+    return <li>{name}</li>
+  })
+
   return (
-    <Window>
-      <FlagContainer>
-        <img src={currentCountry.flag} alt={currentCountry.name} />
-      </FlagContainer>
-      <SingleContent>
-        <ListTitle inputColor="red">{currentCountry.name}</ListTitle>
-      </SingleContent>
-    </Window>
+    <PageWrap>
+      <SingleNav />
+      <SingleWrap>
+        <div>
+          <ListTitle inputColor="palegoldenrod">{currentCountry.name}</ListTitle>
+          <InfoBlock>
+            <p>
+              <strong>Population: </strong>
+              {currentCountry.population}
+            </p>
+            <p>
+              <strong>Languages: </strong>
+              <ul>{languages}</ul>
+            </p>
+          </InfoBlock>
+        </div>
+        <div>
+          <Img src={currentCountry.flag} alt={currentCountry.name} />
+        </div>
+      </SingleWrap>
+    </PageWrap>
   )
 }
 

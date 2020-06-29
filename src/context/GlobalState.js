@@ -32,7 +32,19 @@ export const CountriesProvider = ({ children }) => {
     dispatch({ type: "GET_COUNTRY", payload: res.data })
   }
 
-  // Filter countries
+  // Search countries
+  const searchFilter = (text) => {
+    dispatch({ type: "FILTERED", payload: text })
+  }
+
+  // Filter by stats
+  const filterByPopulation = () => {
+    const popSort = state.countries.map((country) => {
+      return country.pouplation
+    })
+    const sorted = popSort.sort((a, b) => a - b)
+    dispatch({ type: "POPULATION_SORT", payload: sorted })
+  }
 
   // Set region
   const setRegion = async (region) => {
@@ -61,8 +73,10 @@ export const CountriesProvider = ({ children }) => {
         setRegion,
         setRegionName,
         fetchData,
+        searchFilter,
         clearFilter,
         getCountry,
+        filterByPopulation,
       }}
     >
       {children}

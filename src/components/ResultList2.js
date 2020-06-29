@@ -39,7 +39,7 @@ const ResultList2 = (props) => {
           ))
         : countries.map((country) => (
             <li key={country.numericCode}>
-              <Country flag={country.flag} name={country.name} alpha2Code={country.alpha2Code} />
+              <Country population={country.population} name={country.name} alpha2Code={country.alpha2Code} />
             </li>
           ))}
     </ColumnList>

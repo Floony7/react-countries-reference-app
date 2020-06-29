@@ -33,6 +33,11 @@ export default (state, action) => {
         ...state,
         regiionName: action.payload,
       }
+    case "POPULATION_SORT":
+      return {
+        ...state,
+        countries: action.payload,
+      }
     case "GET_COUNTRY":
       return {
         ...state,

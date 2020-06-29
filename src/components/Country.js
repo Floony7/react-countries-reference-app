@@ -21,7 +21,7 @@ const StyledH4 = styled.h4`
   cursor: pointer;
 `
 
-const Country = ({ name, alpha2Code, flag }) => {
+const Country = ({ name, alpha2Code, population }) => {
   return (
     <Card>
       <StyledH4>
