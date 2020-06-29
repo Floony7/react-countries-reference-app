@@ -36,9 +36,9 @@ const Single = (props) => {
     // eslint-disable-next-line
   }, [])
 
-  const languages = currentCountry.languages.map(({ name }) => {
-    return <li>{name}</li>
-  })
+  // const languages = currentCountry.languages.map(({ name }) => {
+  //   return <li>{name}</li>
+  // })
 
   return (
     <PageWrap>
@@ -53,7 +53,9 @@ const Single = (props) => {
             </p>
             <p>
               <strong>Languages: </strong>
-              <ul>{languages}</ul>
+              <ul>
+                <li>Languages list here...</li>
+              </ul>
             </p>
           </InfoBlock>
         </div>
