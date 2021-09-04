@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState, useCallback } from "react"
 import styled from "styled-components"
 import { useParams } from "react-router-dom"
+import formatNum from "../utils/FormatNumber"
 import StateContext from "../context/StateContext"
 import ListTitle from "../styled/ListTitle"
 import SingleNav from "../components/SingleNav"
@@ -31,28 +32,44 @@ const InfoBlock = styled.div`
 const Single = (props) => {
   let { alpha2Code } = useParams()
   const { getCountry, currentCountry } = useContext(StateContext)
-  const [languageList, setLanguageList] = useState([])
-  const { name, population, area, languages } = currentCountry
+  const { name, capital, population, area, languages, currencies } = currentCountry
 
-  const getLanguages = useCallback(() => {
-    const obj = Object.assign({}, languages)
-    for (let i in obj) {
-      setLanguageList(obj[i].name)
-    }
-  }, [languages])
+  // const getCurrency = useCallback((currencies) => {
+  //   const obj = Object.assign({}, currencies)
+  //   let currency = []
+  //   for (let i in obj) {
+  //     currency.push(obj[i].name)
+  //   }
+  //   setMoney([...currency])
+  // }, [])
 
   useEffect(() => {
     getCountry(alpha2Code)
-    getLanguages()
     // eslint-disable-next-line
   }, [])
 
   // CODE WORKS!
-  // const obj = Object.assign({}, languages)
-  // let langs = []
-  // for (let i in obj) {
-  //   langs.push(obj[i].name)
+  const obj = Object.assign({}, languages)
+  let langs = []
+  for (let i in obj) {
+    langs.push(obj[i].name)
+  }
+
+  const currencyObj = Object.assign({}, currencies)
+  let currency = []
+  for (let i in currencyObj) {
+    currency.push(currencyObj[i].name)
+  }
+
+  // const outputArr = (feature) => {
+  //   const featureObj = Object.assign({}, feature)
+  //   let newArr = []
+  //   for (let i in featureObj) {
+  //     newArr.push(featureObj[i].name)
+  //   }
+  //   console.log(newArr)
   // }
+  // outputArr(languages)
 
   // const languages = Object.values(curr)
   // console.log(currentCountry)
@@ -67,16 +84,29 @@ const Single = (props) => {
           <ListTitle inputColor="palegoldenrod">{name}</ListTitle>
           <InfoBlock>
             <p>
+              <strong>Capital: </strong>
+              {capital}
+              <br />
               <strong>Population: </strong>
-              {population}
+              {formatNum(parseInt(population))}
               <br />
               <strong>Area: </strong>
-              {area}
+              {formatNum(parseInt(area))}km&sup2;
             </p>
+            <strong>Languages:</strong>
             <p>
-              <strong>Languages:</strong>{" "}
-              {languageList.map((lang, index) => (
-                <li key={index}>{lang}</li>
+              {langs.map((lang, index) => (
+                <span key={index}>
+                  {lang} <br />
+                </span>
+              ))}
+            </p>
+            <strong>Currency:</strong>
+            <p>
+              {currency.map((lang, index) => (
+                <span key={index}>
+                  {lang} <br />
+                </span>
               ))}
             </p>
           </InfoBlock>
