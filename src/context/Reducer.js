@@ -43,6 +43,11 @@ export default (state, action) => {
         ...state,
         currentCountry: action.payload,
       }
+    case "GET_LANGUAGES":
+      return {
+        ...state,
+        langs: action.payload,
+      }
     default:
       return state
   }

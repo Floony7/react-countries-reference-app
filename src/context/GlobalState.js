@@ -8,6 +8,7 @@ export const CountriesProvider = ({ children }) => {
     loading: false,
     countries: [],
     currentCountry: {},
+    langs: {},
     filtered: null,
     regionName: "",
   }
@@ -32,6 +33,19 @@ export const CountriesProvider = ({ children }) => {
     dispatch({ type: "GET_COUNTRY", payload: res.data })
   }
 
+  // Get the languages for the selected country
+  const getLanguages = async () => {
+    const res = await axios.get(`https://restcountries.eu/rest/v2/all?fields=name;alpha2Code;languages`)
+    dispatch({ type: "GET_LANGUAGES", payload: res.data })
+  }
+
+  // const getLanguages = async (code) => {
+  //   const res = await axios.get(`https://restcountries.eu/rest/v2/all?fields=name;alpha2Code;languages`)
+  //   const selected = res.data.find((country) => country.alpha2Code === code)
+  //   console.log(selected)
+  //   dispatch({ type: "GET_LANGUAGES", payload: selected })
+  // }
+
   // Search countries
   const searchFilter = (text) => {
     dispatch({ type: "FILTERED", payload: text })
@@ -40,7 +54,7 @@ export const CountriesProvider = ({ children }) => {
   // Filter by stats
   const filterByPopulation = () => {
     const popSort = state.countries.map((country) => {
-      return country.pouplation
+      return country.population
     })
     const sorted = popSort.sort((a, b) => a - b)
     dispatch({ type: "POPULATION_SORT", payload: sorted })
@@ -70,12 +84,14 @@ export const CountriesProvider = ({ children }) => {
         filtered: state.filtered,
         currentCountry: state.currentCountry,
         region: state.region,
+        langs: state.langs,
         setRegion,
         setRegionName,
         fetchData,
         searchFilter,
         clearFilter,
         getCountry,
+        getLanguages,
         filterByPopulation,
       }}
     >

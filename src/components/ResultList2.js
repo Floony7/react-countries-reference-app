@@ -27,8 +27,6 @@ const ResultList2 = (props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  const code = countries.map((country) => `Country code is ${country.alpha2Code} and ${country.numericCode}`)
-  console.log(code)
   return (
     <ColumnList>
       {filtered !== null

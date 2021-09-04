@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react"
+import React, { useContext, useEffect, useState, useCallback } from "react"
 import styled from "styled-components"
 import { useParams } from "react-router-dom"
 import StateContext from "../context/StateContext"
@@ -31,31 +31,53 @@ const InfoBlock = styled.div`
 const Single = (props) => {
   let { alpha2Code } = useParams()
   const { getCountry, currentCountry } = useContext(StateContext)
+  const [languageList, setLanguageList] = useState([])
+  const { name, population, area, languages } = currentCountry
+
+  const getLanguages = useCallback(() => {
+    const obj = Object.assign({}, languages)
+    for (let i in obj) {
+      setLanguageList(obj[i].name)
+    }
+  }, [languages])
+
   useEffect(() => {
     getCountry(alpha2Code)
+    getLanguages()
     // eslint-disable-next-line
   }, [])
 
-  // const languages = currentCountry.languages.map(({ name }) => {
-  //   return <li>{name}</li>
-  // })
+  // CODE WORKS!
+  // const obj = Object.assign({}, languages)
+  // let langs = []
+  // for (let i in obj) {
+  //   langs.push(obj[i].name)
+  // }
+
+  // const languages = Object.values(curr)
+  // console.log(currentCountry)
+  // const langs = languages[19]
+  // console.log(langs)
 
   return (
     <PageWrap>
       <SingleNav />
       <SingleWrap>
         <div>
-          <ListTitle inputColor="palegoldenrod">{currentCountry.name}</ListTitle>
+          <ListTitle inputColor="palegoldenrod">{name}</ListTitle>
           <InfoBlock>
             <p>
               <strong>Population: </strong>
-              {currentCountry.population}
+              {population}
+              <br />
+              <strong>Area: </strong>
+              {area}
             </p>
             <p>
-              <strong>Languages: </strong>
-              <ul>
-                <li>Languages list here...</li>
-              </ul>
+              <strong>Languages:</strong>{" "}
+              {languageList.map((lang, index) => (
+                <li key={index}>{lang}</li>
+              ))}
             </p>
           </InfoBlock>
         </div>

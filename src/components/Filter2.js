@@ -2,7 +2,6 @@ import React, { useContext, useRef, useEffect } from "react"
 import styled from "styled-components"
 import "../App.css"
 import SearchInput from "../styled/SearchInput"
-import StyledSelect from "../styled/StyledSelect"
 import StateContext from "../context/StateContext"
 
 const FilterBar = styled.div`
@@ -47,9 +46,6 @@ const Filter2 = (props) => {
         <h2 className="heading--purple">Search</h2>
         <div className="filter-inner">
           <SearchInput ref={text} type="text" placeholder="Enter country name..." onChange={handleChange} />
-          <StyledSelect>
-            <option value="first">First option</option>
-          </StyledSelect>
           {/* <label htmlFor="population">
             <input type="checkbox" name="population" onClick={handlePopFilter} />
           </label> */}
