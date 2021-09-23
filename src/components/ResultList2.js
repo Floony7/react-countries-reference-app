@@ -28,7 +28,7 @@ const ResultList2 = (props) => {
   }, [])
 
   return (
-    <ColumnList>
+    <ColumnList id="list">
       {filtered !== null
         ? filtered.map((country) => (
             <li key={country.numericCode}>

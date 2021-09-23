@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState, useCallback } from "react"
+import React, { useContext, useEffect, useMemo } from "react"
 import styled from "styled-components"
 import { useParams } from "react-router-dom"
 import formatNum from "../utils/FormatNumber"
@@ -49,32 +49,31 @@ const Single = (props) => {
   }, [])
 
   // CODE WORKS!
-  const obj = Object.assign({}, languages)
-  let langs = []
-  for (let i in obj) {
-    langs.push(obj[i].name)
-  }
-
-  const currencyObj = Object.assign({}, currencies)
-  let currency = []
-  for (let i in currencyObj) {
-    currency.push(currencyObj[i].name)
-  }
-
-  // const outputArr = (feature) => {
-  //   const featureObj = Object.assign({}, feature)
-  //   let newArr = []
-  //   for (let i in featureObj) {
-  //     newArr.push(featureObj[i].name)
-  //   }
-  //   console.log(newArr)
+  // const obj = Object.assign({}, languages)
+  // let langs = []
+  // for (let i in obj) {
+  //   langs.push(obj[i].name)
   // }
-  // outputArr(languages)
 
-  // const languages = Object.values(curr)
-  // console.log(currentCountry)
-  // const langs = languages[19]
-  // console.log(langs)
+  // const currencyObj = Object.assign({}, currencies)
+  // let currency = []
+  // for (let i in currencyObj) {
+  //   currency.push(currencyObj[i].name)
+  // }
+
+  const outputArr = (feature) => {
+    const featureObj = Object.assign({}, feature)
+    let newArr = []
+    for (let i in featureObj) {
+      newArr.push(featureObj[i].name)
+    }
+
+    return newArr
+  }
+
+  const setCurrency = useMemo(() => outputArr(currencies), [currencies])
+  const setLanguage = useMemo(() => outputArr(languages), [languages])
+  console.log(setCurrency)
 
   return (
     <PageWrap>
@@ -91,11 +90,11 @@ const Single = (props) => {
               {formatNum(parseInt(population))}
               <br />
               <strong>Area: </strong>
-              {formatNum(parseInt(area))}km&sup2;
+              {formatNum(parseInt(area))} km&sup2;
             </p>
             <strong>Languages:</strong>
             <p>
-              {langs.map((lang, index) => (
+              {setLanguage.map((lang, index) => (
                 <span key={index}>
                   {lang} <br />
                 </span>
@@ -103,7 +102,7 @@ const Single = (props) => {
             </p>
             <strong>Currency:</strong>
             <p>
-              {currency.map((lang, index) => (
+              {setCurrency.map((lang, index) => (
                 <span key={index}>
                   {lang} <br />
                 </span>

@@ -1,4 +1,6 @@
 import React, { useContext, useState } from "react"
+// import { Link } from "react-router-dom"
+import { NavHashLink } from "react-router-hash-link"
 import StateContext from "../context/StateContext"
 import styled from "styled-components"
 import RegionButton from "../styled/RegionButton"
@@ -22,6 +24,11 @@ const Intro = styled.div`
   margin: 0 auto;
 `
 
+const Label = styled.span`
+  color: #fff;
+  text-decoration: none;
+`
+
 const RegionNav = (props) => {
   const { setRegion, clearFilter } = useContext(StateContext)
   const [title, setTitle] = useState("")
@@ -42,20 +49,30 @@ const RegionNav = (props) => {
         <h2 className="heading--purple">View countries and territories by region</h2>
         <div className="nav-inner">
           <RegionButton data-value="Africa" inputColor="green" onClick={handleClick}>
-            Africa
+            <NavHashLink to="#list">
+              <Label>Africa</Label>
+            </NavHashLink>
           </RegionButton>
-          <RegionButton data-value="Asia" inputColor="crimson" onClick={handleClick}>
-            Asia
-          </RegionButton>
-          <RegionButton data-value="Europe" inputColor="mediumblue" onClick={handleClick}>
-            Europe
-          </RegionButton>
-          <RegionButton data-value="Oceania" inputColor="orangered" onClick={handleClick}>
-            Oceania
-          </RegionButton>
-          <RegionButton data-value="Americas" inputColor="steelblue" onClick={handleClick}>
-            The Americas
-          </RegionButton>
+          <NavHashLink to="#list">
+            <RegionButton data-value="Asia" inputColor="crimson" onClick={handleClick}>
+              <Label>Asia</Label>
+            </RegionButton>
+          </NavHashLink>
+          <NavHashLink to="#list">
+            <RegionButton data-value="Europe" inputColor="mediumblue" onClick={handleClick}>
+              <Label>Europe</Label>
+            </RegionButton>
+          </NavHashLink>
+          <NavHashLink to="#list">
+            <RegionButton data-value="Oceania" inputColor="orangered" onClick={handleClick}>
+              <Label>Oceania</Label>
+            </RegionButton>
+          </NavHashLink>
+          <NavHashLink to="#list">
+            <RegionButton data-value="Americas" inputColor="steelblue" onClick={handleClick}>
+              <Label>The Americas</Label>
+            </RegionButton>
+          </NavHashLink>
           <Filter2 />
         </div>
       </NavWrap>

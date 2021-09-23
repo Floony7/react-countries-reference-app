@@ -31,7 +31,7 @@ export default (state, action) => {
     case "SET_REGION_NAME":
       return {
         ...state,
-        regiionName: action.payload,
+        regionName: action.payload,
       }
     case "POPULATION_SORT":
       return {
@@ -42,11 +42,6 @@ export default (state, action) => {
       return {
         ...state,
         currentCountry: action.payload,
-      }
-    case "GET_LANGUAGES":
-      return {
-        ...state,
-        langs: action.payload,
       }
     default:
       return state
